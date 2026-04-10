@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Finance Tracker</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 40px;
+            background-color: #f4f6f8;
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+        }
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+            color: green;
+        }
+    </style>
+
+    <!-- 🔥 Paste Google Analytics code here -->
+
+</head>
+
+<body>
+
+    <h1>💰 Personal Finance Tracker</h1>
+
+    <p>Enter your income and expenses</p>
+
+    <input type="number" id="income" placeholder="Enter Income">
+    <input type="number" id="expense" placeholder="Enter Expense">
+
+    <br>
+
+    <button onclick="calculateSavings()">Calculate Savings</button>
+    <button onclick="trackExpense()">Track Expense</button>
+
+    <div id="result"></div>
+
+    <script>
+        function calculateSavings() {
+            let income = document.getElementById("income").value;
+            let expense = document.getElementById("expense").value;
+
+            let savings = income - expense;
+
+            document.getElementById("result").innerHTML =
+                "💵 Your Savings: ₹" + savings;
+
+            // Google Analytics Event
+            gtag('event', 'calculate_savings', {
+                'event_category': 'finance',
+                'event_label': 'Savings Calculation'
+            });
+        }
+
+        function trackExpense() {
+            let expense = document.getElementById("expense").value;
+
+            document.getElementById("result").innerHTML =
+                "📊 Expense Recorded: ₹" + expense;
+
+            gtag('event', 'expense_tracked', {
+                'event_category': 'finance',
+                'event_label': 'Expense Tracking'
+            });
+        }
+    </script>
+
+</body>
+</html>
